@@ -157,14 +157,14 @@ class PortraitMaster:
                 "nationality_2": (nationality_list, {
                     "default": nationality_list[0],
                 }),
-                "nationality_mix": ("FLOAT", {
+                "国家_混合度": ("FLOAT", {
                     "default": 0.5,
                     "min": 0,
                     "max": 1,
                     "step": 0.05,
                     "display": "slider",
                 }),
-                "body_type": (body_type_list, {
+                "体态": (body_type_list, {
                     "default": body_type_list[0],
                 }),
                 "body_type_weight": ("FLOAT", {
@@ -446,7 +446,7 @@ class PortraitMaster:
 
     CATEGORY = "AI WizArt"
 
-    def pm(self, shot="-", shot_weight=1, gender="-", body_type="-", body_type_weight=0, eyes_color="-", facial_expression="-", facial_expression_weight=0, face_shape="-", face_shape_weight=0, nationality_1="-", nationality_2="-", nationality_mix=0.5, age=30, hair_style="-", hair_color="-", disheveled=0, dimples=0, freckles=0, skin_pores=0, skin_details=0, moles=0, skin_imperfections=0, wrinkles=0, tanned_skin=0, eyes_details=1, iris_details=1, circular_iris=1, circular_pupil=1, facial_asymmetry=0, prompt_additional="", prompt_start="", prompt_end="", light_type="-", light_direction="-", light_weight=0, negative_prompt="", photorealism_improvement="disable", beard="-", model_pose="-", skin_acne=0, style_1="-", style_1_weight=0, style_2="-", style_2_weight=0, androgynous=0, natural_skin=0, bare_face=0, washed_face=0, dried_face=0, random_gender=False, random_age=False, random_nationality=False, random_hairstyle=False, random_eyes_color=False, random_hair_color=False, random_disheveled=False, random_freckles=False, random_moles=False, random_beard=False, random_shot=False, random_androgynous=False, random_facial_expression=False, random_skin_imperfections=False, random_style_1=False, random_style_2=False, random_body_type=False, random_model_pose=False, hair_length="-", random_hair_length=False, eyes_shape="-", random_eyes_shape=False, lisp_shape="-", lips_color="-", random_lips_color=False, lips_shape="-", random_lips_shape=False, makeup="-", random_makeup=False, clothes="-", random_clothes=False, random_face_shape=False, seed=0):
+    def pm(self, shot="-", shot_weight=1, gender="-", 体态="-", body_type_weight=0, eyes_color="-", facial_expression="-", facial_expression_weight=0, face_shape="-", face_shape_weight=0, nationality_1="-", nationality_2="-", 国家_混合度=0.5, age=30, hair_style="-", hair_color="-", disheveled=0, dimples=0, freckles=0, skin_pores=0, skin_details=0, moles=0, skin_imperfections=0, wrinkles=0, tanned_skin=0, eyes_details=1, iris_details=1, circular_iris=1, circular_pupil=1, facial_asymmetry=0, prompt_additional="", prompt_start="", prompt_end="", light_type="-", light_direction="-", light_weight=0, negative_prompt="", photorealism_improvement="disable", beard="-", model_pose="-", skin_acne=0, style_1="-", style_1_weight=0, style_2="-", style_2_weight=0, androgynous=0, natural_skin=0, bare_face=0, washed_face=0, dried_face=0, random_gender=False, random_age=False, random_nationality=False, random_hairstyle=False, random_eyes_color=False, random_hair_color=False, random_disheveled=False, random_freckles=False, random_moles=False, random_beard=False, random_shot=False, random_androgynous=False, random_facial_expression=False, random_skin_imperfections=False, random_style_1=False, random_style_2=False, random_body_type=False, random_model_pose=False, hair_length="-", random_hair_length=False, eyes_shape="-", random_eyes_shape=False, lisp_shape="-", lips_color="-", random_lips_color=False, lips_shape="-", random_lips_shape=False, makeup="-", random_makeup=False, clothes="-", random_clothes=False, random_face_shape=False, seed=0):
 
         prompt = []
 
@@ -499,7 +499,7 @@ class PortraitMaster:
             face_shape_weight = random.uniform(0.5,1.25)
 
         if random_body_type:
-            body_type = random.choice(body_type_list)
+            体态 = random.choice(body_type_list)
             body_type_weight = random.uniform(0.25,1.25)
 
         if random_beard:
@@ -542,7 +542,7 @@ class PortraitMaster:
             gender = gender + " "
 
         if nationality_1 != '-' and nationality_2 != '-':
-            nationality = f"[{nationality_1}:{nationality_2}:{round(nationality_mix, 2)}] "
+            nationality = f"[{nationality_1}:{nationality_2}:{round(国家_混合度, 2)}] "
         elif nationality_1 != '-':
             nationality = nationality_1 + " "
         elif nationality_2 != '-':
@@ -561,8 +561,8 @@ class PortraitMaster:
         if androgynous > 0:
             prompt.append(applyWeight('androgynous',androgynous))
 
-        if body_type != "-" and body_type_weight > 0:
-            prompt.append(applyWeight(f"{body_type}, {body_type} body",body_type_weight))
+        if 体态 != "-" and body_type_weight > 0:
+            prompt.append(applyWeight(f"{体态}, {体态} body",body_type_weight))
 
         if model_pose != "-":
             prompt.append(f"({model_pose}:1.25)")
