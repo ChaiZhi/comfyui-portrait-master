@@ -1,3 +1,4 @@
+# 汉化UI的版本
 # ComfyUI Portrait Master
 
 This node was designed to help AI image creators to generate prompts for human portraits.
